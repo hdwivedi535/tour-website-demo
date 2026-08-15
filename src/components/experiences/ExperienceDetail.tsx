@@ -209,7 +209,7 @@ function Gallery({ experience }: { experience: Experience }) {
 
 function ClosingCta({ experience }: { experience: Experience }) {
   return (
-    <section className="bg-night text-ivory">
+    <section id="enquire" className="bg-night text-ivory">
       <div className="mx-auto max-w-3xl px-5 py-20 text-center sm:px-8 sm:py-28">
         <p className="t-label text-earth">Begin</p>
         <h2 className="t-h1 mt-5">Interested in this experience?</h2>
