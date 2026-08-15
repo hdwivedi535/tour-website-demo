@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { EnquiryForm } from "@/components/contact/EnquiryForm";
 import { PageIntro } from "@/components/ui/PageIntro";
 import { getExperienceBySlug } from "@/lib/experiences";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
+  description:
+    "Enquire about a Varanasi experience or send a general travel request.",
 };
 
 export default async function ContactPage({
@@ -12,20 +15,57 @@ export default async function ContactPage({
 }: {
   searchParams: Promise<{ experience?: string }>;
 }) {
-  const { experience: slug } = await searchParams;
+  const { experience: rawSlug } = await searchParams;
+  const slug = rawSlug?.trim();
   const selected = slug ? getExperienceBySlug(slug) : undefined;
+  const unknownExperience = Boolean(slug && !selected);
 
   return (
     <>
       <PageIntro
         eyebrow="Contact"
-        title="A conversation, not a form"
+        title={selected ? "Enquire about this experience" : "Begin a conversation"}
         copy={
           selected
-            ? `You asked about ${selected.title}. Dedicated enquiry flows will arrive later — for now, reach us through the channels below and mention this experience.`
-            : "Reach us through the channels you already use. Dedicated enquiry flows will arrive later — for now, a simple invitation to connect."
+            ? "Share a few details about dates, pace, and how you like to travel. This is an enquiry, not a booking."
+            : "Tell us how you like to travel. If you have a particular experience in mind, you can also enquire from its page. This is a request, not a reservation."
         }
       />
+
+      <section className="bg-ivory">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:py-24">
+          <div className="lg:col-span-4">
+            {selected ? (
+              <div>
+                <p className="t-label">Enquiring about</p>
+                <h2 className="t-h2 mt-4">{selected.title}</h2>
+                <p className="t-small mt-4">
+                  {selected.location} · {selected.duration}
+                </p>
+                <p className="t-body mt-6 text-muted">{selected.shortDescription}</p>
+              </div>
+            ) : (
+              <div>
+                <p className="t-label">General enquiry</p>
+                <h2 className="t-h2 mt-4">Travel, shaped around you</h2>
+                <p className="t-body mt-6 text-muted">
+                  {unknownExperience
+                    ? "We could not find that experience. You can still send a general enquiry, or return to the experiences collection and choose again."
+                    : "No experience is pre-selected. Send a general request, or open an experience page if you already know the day you want."}
+                </p>
+              </div>
+            )}
+          </div>
+
+          <div className="lg:col-span-8">
+            <EnquiryForm
+              experienceSlug={selected?.slug}
+              experienceTitle={selected?.title}
+            />
+          </div>
+        </div>
+      </section>
+
       <section className="bg-ivory">
         <div className="mx-auto grid max-w-7xl gap-px border-y border-border bg-border px-0 sm:grid-cols-3">
           <ContactCard
