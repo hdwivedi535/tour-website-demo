@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageIntro } from "@/components/ui/PageIntro";
+import { experiences } from "@/lib/experiences";
 
 export const metadata: Metadata = {
   title: "About",
@@ -18,8 +19,8 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:items-center lg:py-24">
           <div className="relative aspect-[5/6] overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1400&q=80"
-              alt="Stone steps and river light in Varanasi"
+              src={experiences[0].galleryImages[1].src}
+              alt={experiences[0].galleryImages[1].alt}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"

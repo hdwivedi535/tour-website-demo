@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { PageIntro } from "@/components/ui/PageIntro";
+import { experiences } from "@/lib/experiences";
 
 export const metadata: Metadata = {
   title: "Destinations",
@@ -19,8 +20,8 @@ export default function DestinationsPage() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:py-24">
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1600&q=80"
-              alt="Boats on the Ganges at first light"
+              src={experiences[0].galleryImages[2].src}
+              alt={experiences[0].galleryImages[2].alt}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"

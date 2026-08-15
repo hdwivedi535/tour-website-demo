@@ -1,12 +1,15 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { experiences } from "@/lib/experiences";
 
 export function Hero() {
+  const image = experiences[0].heroImage;
+
   return (
     <section className="relative isolate min-h-[88vh] overflow-hidden bg-night text-ivory">
       <Image
-        src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=2400&q=80"
-        alt="Historic monument seen through a carved stone archway at dawn"
+        src={image.src}
+        alt={image.alt}
         fill
         priority
         sizes="100vw"

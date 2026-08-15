@@ -1,14 +1,17 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { experiences } from "@/lib/experiences";
 
 export function DestinationPreview() {
+  const image = experiences[1].heroImage;
+
   return (
     <section className="bg-ivory">
       <div className="mx-auto grid max-w-7xl items-stretch lg:grid-cols-2">
         <div className="relative min-h-[420px] lg:min-h-[640px]">
           <Image
-            src="https://images.unsplash.com/photo-1593693411515-c20227bcafa2?auto=format&fit=crop&w=1800&q=80"
-            alt="Lamps and riverfront gathering at dusk in Varanasi"
+            src={image.src}
+            alt={image.alt}
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
