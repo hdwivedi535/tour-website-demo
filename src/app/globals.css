@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+:root {
+  --ivory: #f6f1e8;
+  --ivory-deep: #ece4d6;
+  --paper: #fbf7f0;
+  --charcoal: #1c1915;
+  --ink: #2a261f;
+  --muted: #6b6458;
+  --earth: #8a6a45;
+  --earth-deep: #6f5334;
+  --border: #ddd4c5;
+  --night: #141210;
+  --night-soft: #1f1b17;
+}
+
+@theme inline {
+  --color-ivory: var(--ivory);
+  --color-ivory-deep: var(--ivory-deep);
+  --color-paper: var(--paper);
+  --color-charcoal: var(--charcoal);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-earth: var(--earth);
+  --color-earth-deep: var(--earth-deep);
+  --color-border: var(--border);
+  --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-cormorant);
+  --font-serif: var(--font-cormorant);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--earth) 28%, transparent);
+  color: var(--charcoal);
+}
+
+.t-display {
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+.t-h1 {
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.t-h2 {
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.t-h3 {
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1.25;
+}
+
+.t-body {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.t-small {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.t-nav {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.t-button {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.t-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--earth);
+}
+
+.logo-mark {
+  font-family: var(--font-cormorant), ui-serif, Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  font-size: 1.05rem;
+  text-indent: 0.42em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
